@@ -9,7 +9,7 @@ module.exports = {
 
   extends: [
     'plugin:react/recommended',
-    'standard'
+    './node_modules/standard/eslintrc.json'
   ],
 
   parser: '@typescript-eslint/parser',
