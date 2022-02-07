@@ -2,9 +2,9 @@ import React from 'react'
 import { FlatList } from 'react-native'
 
 //  component
-import ChatRoomItem from '../ChatRoomItem'
+import ChatRoomItem from './ChatRoomItem'
 
-import chatRoomsData from '../../../assets/dummy-data/ChatRooms'
+import chatRoomsData from '../../assets/dummy-data/ChatRooms'
 
 export default function ChatList () {
   return (
