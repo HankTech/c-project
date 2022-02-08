@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StyleSheet, FlatList, SafeAreaView } from 'react-native'
-import { useRoute } from '@react-navigation/native'
+import { useRoute, useNavigation } from '@react-navigation/native'
 
 //  components
 import Message from '../components/ChatRoom/Message'
@@ -10,6 +10,11 @@ import chatRoomData from '../assets/dummy-data/Chats'
 
 const ChatRoomScreen = () => {
   const route = useRoute()
+  const navigation = useNavigation()
+
+  useEffect(() => {
+    navigation.setOptions({ title: `Nombre de id: ${route.params?.id}` })
+  }, [])
 
   console.log('displaying chat room: ', route.params?.id)
 
