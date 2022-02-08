@@ -20,21 +20,23 @@ const Navigation = () => {
           name='HomeScreen'
           component={HomeScreen}
           options={{
-            title: 'The C project',
+            title: 'the C project',
+            headerTitleAlign: 'center',
+            headerTitleStyle: { fontWeight: 'bold' },
             headerLeft: () => (
               <FastImage
                 source={{ uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg' }}
-                style={{ height: 45, width: 45, borderRadius: 30, marginRight: 10 }}
+                style={{ height: 35, width: 35, borderRadius: 30, marginRight: 10 }}
                 resizeMode='cover'
               />
             ),
             headerRight: () => (
               <View style={{ flexDirection: 'row' }}>
                 <TouchableOpacity>
-                  <Feather name='search' color='black' size={24} style={{ marginRight: 15 }} />
+                  <Feather name='camera' color='black' size={24} style={{ marginRight: 10 }} />
                 </TouchableOpacity>
                 <TouchableOpacity>
-                  <Ionicons name='ellipsis-vertical' color='black' size={24} />
+                  <Feather name='edit-2' color='black' size={24} />
                 </TouchableOpacity>
               </View>
             ),
