@@ -9,12 +9,12 @@ const MessageInput = () => {
   const [message, setMessage] = useState('')
 
   const onPressSend = () => {
-    console.warn(message)
+    console.log(message)
     setMessage('')
   }
 
   const onPressPlus = () => {
-    console.warn('press plus')
+    console.log('press plus')
   }
 
   const onPress = () => {

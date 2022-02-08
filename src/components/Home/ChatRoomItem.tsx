@@ -1,13 +1,20 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import FastImage from 'react-native-fast-image'
+import { useNavigation } from '@react-navigation/native'
 
 export default function ChatRoomItem ({ chatRoom }) {
-  console.log(chatRoom)
+  const navigation = useNavigation()
+
+  const user = chatRoom.users[1]
+
+  const onPress = () => {
+    navigation.navigate('ChatRoomScreen', { id: chatRoom.id })
+  }
 
   return (
-    <View style={styles.container}>
-      <FastImage style={styles.image} source={{ uri: chatRoom.users[1].imageUri }} resizeMode='cover' />
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <FastImage style={styles.image} source={{ uri: user.imageUri }} resizeMode='cover' />
 
       {
         chatRoom.newMessages &&
@@ -18,12 +25,12 @@ export default function ChatRoomItem ({ chatRoom }) {
 
       <View style={styles.rightContainer}>
         <View style={styles.row}>
-          <Text style={styles.name}>{chatRoom.users[1].name}</Text>
+          <Text style={styles.name}>{user.name}</Text>
           <Text style={styles.date}>{chatRoom.lastMessage.createdAt}</Text>
         </View>
         <Text numberOfLines={1} style={styles.message}>{chatRoom.lastMessage.content}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 
