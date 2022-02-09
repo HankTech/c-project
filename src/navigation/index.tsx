@@ -6,7 +6,7 @@ import FastImage from 'react-native-fast-image'
 import Feather from 'react-native-vector-icons/Feather'
 
 //  screens
-import SignInScreen from '../screens/SignInScreen'
+import IntroScreen from '../screens/IntroScreen'
 import HomeScreen from '../screens/HomeScreen'
 import ChatRoomScreen from '../screens/ChatRoomScreen'
 
@@ -16,7 +16,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='SignInScreen' component={SignInScreen} options={{ header: () => null }} />
+        <Stack.Screen name='IntroScreen' component={IntroScreen} options={{ header: () => null }} />
 
         <Stack.Screen
           name='HomeScreen'

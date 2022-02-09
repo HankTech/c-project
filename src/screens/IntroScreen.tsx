@@ -6,7 +6,7 @@ import i18n from '../languages/i18n.config'
 import ChattingImage from '../components/img/ChattingImage'
 import Button from '../components/common/Button'
 
-const SignInScreen = () => {
+const IntroScreen = () => {
   return (
     <View style={styles.root}>
       <View style={styles.image}>
@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default SignInScreen
+export default IntroScreen
