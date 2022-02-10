@@ -4,9 +4,11 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import FastImage from 'react-native-fast-image'
 import Feather from 'react-native-vector-icons/Feather'
+import i18n from '../languages/i18n.config'
 
 //  screens
 import IntroScreen from '../screens/IntroScreen'
+import SiginScreen from '../screens/SiginScreen'
 import HomeScreen from '../screens/HomeScreen'
 import ChatRoomScreen from '../screens/ChatRoomScreen'
 
@@ -19,12 +21,23 @@ const Navigation = () => {
         <Stack.Screen name='IntroScreen' component={IntroScreen} options={{ header: () => null }} />
 
         <Stack.Screen
+          name='SiginScreen'
+          component={SiginScreen}
+          options={{
+            headerBackVisible: false,
+            title: i18n.t('register'),
+            headerTitleAlign: 'center',
+            headerTitleStyle: { fontSize: 22, fontWeight: 'bold' }
+          }}
+        />
+
+        <Stack.Screen
           name='HomeScreen'
           component={HomeScreen}
           options={{
             title: 'the C project',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontWeight: 'bold' },
+            headerTitleStyle: { fontSize: 22, fontWeight: 'bold' },
             headerLeft: () => (
               <FastImage
                 source={{ uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg' }}
@@ -51,6 +64,7 @@ const Navigation = () => {
           options={(props) => (
             {
               title: props.title,
+              headerTitleStyle: { fontSize: 22, fontWeight: 'bold' },
               headerLeft: () => (
                 <FastImage
                   source={{ uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg' }}
