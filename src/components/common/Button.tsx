@@ -2,14 +2,15 @@ import { TouchableOpacity, Text, StyleSheet, TouchableOpacityProps, TextProps } 
 import React from 'react'
 
 interface buttonProps {
-  text: string;
-  containerStyle?: TouchableOpacityProps['style'],
+  text: string,
+  buttonStyle?: TouchableOpacityProps['style'],
   textStyle?: TextProps['style'],
+  onPress: Function
 }
 
-const Button = ({ text, containerStyle, textStyle }: buttonProps) => {
+const Button = ({ text, buttonStyle, textStyle, onPress }: buttonProps) => {
   return (
-    <TouchableOpacity style={[styles.container, containerStyle]}>
+    <TouchableOpacity style={[styles.container, buttonStyle]} onPress={() => onPress()}>
       <Text style={[styles.text, textStyle]}>{text}</Text>
     </TouchableOpacity>
   )
