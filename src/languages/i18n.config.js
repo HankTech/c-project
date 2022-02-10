@@ -18,8 +18,6 @@ i18n.fallbacks = true
 export const initI18n = () => {
   const language = RNLocalize.findBestAvailableLanguage(['es', 'en'])
 
-  console.log(language)
-
   if (language?.languageTag) {
     i18n.locale = language?.languageTag
   } else {
