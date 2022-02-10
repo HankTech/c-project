@@ -10,5 +10,7 @@ export const es = {
   password: 'Contraseña',
   'this field is required': 'Este campo es obligatorio',
   'password should be minimon 8 characters long': 'La contraseña debe tener minimo 8 caracteres',
-  'enter a valid email': 'Ingrese un correo valido'
+  'enter a valid email': 'Ingrese un correo valido',
+  'password repeat': 'Repite la contraseña',
+  'password do not match': 'Las contraseñas no coinciden'
 }

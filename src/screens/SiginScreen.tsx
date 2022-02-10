@@ -11,11 +11,14 @@ import Button from '../components/common/Button'
 
 type formData = {
   email: string,
-  passsword: string
+  password: string,
+  passwordRepeat: string
 }
 
 const SiginScreen = () => {
-  const { control, handleSubmit, formState: { errors } } = useForm<formData>()
+  const { control, handleSubmit, formState: { errors }, watch } = useForm<formData>()
+
+  const password = watch('password')
 
   console.log(errors)
 
@@ -37,7 +40,7 @@ const SiginScreen = () => {
           }}
           placeholder={i18n.t('email')}
           inputStyles={styles.input}
-          inputContainerStyles={styles.emailInput}
+          inputContainerStyles={styles.inputContainer}
         />
         <Input
           name='password'
@@ -49,6 +52,20 @@ const SiginScreen = () => {
           placeholder={i18n.t('password')}
           secureTextEntry
           inputStyles={styles.input}
+          inputContainerStyles={styles.inputContainer}
+        />
+
+        <Input
+          name='passwordRepeat'
+          rules={{
+            required: { value: true, message: i18n.t('this field is required') },
+            validate: (value: string) => value === password || i18n.t('password do not match')
+          }}
+          control={control}
+          placeholder={i18n.t('password repeat')}
+          secureTextEntry
+          inputStyles={styles.input}
+          inputContainerStyles={styles.inputContainer}
         />
 
         <Button text='Registrar' onPress={handleSubmit(submit)} buttonStyle={styles.buttonStyle} />
@@ -82,12 +99,12 @@ const styles = StyleSheet.create({
     paddingLeft: 10
   },
 
-  emailInput: {
+  inputContainer: {
     marginBottom: 45
   },
 
   buttonStyle: {
-    marginTop: '25%'
+    marginTop: '15%'
   }
 })
 
