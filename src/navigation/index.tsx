@@ -8,7 +8,7 @@ import i18n from '../languages/i18n.config'
 
 //  screens
 import IntroScreen from '../screens/IntroScreen'
-import SiginScreen from '../screens/SiginScreen'
+import SigupScreen from '../screens/SigupScreen'
 import HomeScreen from '../screens/HomeScreen'
 import ChatRoomScreen from '../screens/ChatRoomScreen'
 
@@ -22,7 +22,7 @@ const Navigation = () => {
 
         <Stack.Screen
           name='SiginScreen'
-          component={SiginScreen}
+          component={SigupScreen}
           options={{
             headerBackVisible: false,
             title: i18n.t('register'),

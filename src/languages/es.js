@@ -12,5 +12,7 @@ export const es = {
   'password should be minimon 8 characters long': 'La contraseña debe tener minimo 8 caracteres',
   'enter a valid email': 'Ingrese un correo valido',
   'password repeat': 'Repite la contraseña',
-  'password do not match': 'Las contraseñas no coinciden'
+  'password do not match': 'Las contraseñas no coinciden',
+  'confirm code': 'Confirmar codigo',
+  'sign in': 'Iniciar sesión'
 }

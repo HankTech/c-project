@@ -15,7 +15,7 @@ type formData = {
   passwordRepeat: string
 }
 
-const SiginScreen = () => {
+const SigupScreen = () => {
   const { control, handleSubmit, formState: { errors }, watch } = useForm<formData>()
 
   const password = watch('password')
@@ -68,7 +68,22 @@ const SiginScreen = () => {
           inputContainerStyles={styles.inputContainer}
         />
 
-        <Button text='Registrar' onPress={handleSubmit(submit)} buttonStyle={styles.buttonStyle} />
+        <View style={styles.footerLinks}>
+          <Button
+            text={i18n.t('confirm code')}
+            onPress={() => console.log('press confirm code')}
+            textStyle={styles.footerText}
+            buttonStyle={[styles.footerButton, styles.confirmCode]}
+          />
+          <Button
+            text={i18n.t('sign in')}
+            onPress={() => console.log('press siging')}
+            textStyle={styles.footerText}
+            buttonStyle={[styles.footerButton, styles.sigin]}
+          />
+        </View>
+
+        <Button text={i18n.t('register')} onPress={handleSubmit(submit)} buttonStyle={styles.buttonSubmit} />
       </View>
     </KeyboardAwareScrollView>
   )
@@ -80,7 +95,6 @@ const styles = StyleSheet.create({
   },
 
   inner: {
-    // flex: 1,
     paddingBottom: 15,
     paddingHorizontal: 10
   },
@@ -100,12 +114,38 @@ const styles = StyleSheet.create({
   },
 
   inputContainer: {
-    marginBottom: 45
+    marginBottom: 35
   },
 
-  buttonStyle: {
+  footerLinks: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 12,
+    width: '100%'
+  },
+
+  footerText: {
+    color: '#1D98FF',
+    fontSize: 16
+  },
+
+  footerButton: {
+    backgroundColor: 'none',
+    paddingVertical: 0
+  },
+
+  confirmCode: {
+    marginRight: 45,
+    width: 140
+  },
+
+  sigin: {
+    width: 100
+  },
+
+  buttonSubmit: {
     marginTop: '15%'
   }
 })
 
-export default SiginScreen
+export default SigupScreen
