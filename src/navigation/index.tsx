@@ -8,9 +8,11 @@ import i18n from '../languages/i18n.config'
 
 //  screens
 import IntroScreen from '../screens/IntroScreen'
-import SigupScreen from '../screens/SigupScreen'
+import SignInScreen from '../screens/SignInScreen'
+import SignUpScreen from '../screens/SignUpScreen'
 import HomeScreen from '../screens/HomeScreen'
 import ChatRoomScreen from '../screens/ChatRoomScreen'
+import ConfirmCodeScreen from '../screens/ConfirmCodeScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -18,17 +20,42 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='IntroScreen' component={IntroScreen} options={{ header: () => null }} />
+        <Stack.Screen
+          name='IntroScreen'
+          component={IntroScreen}
+          options={{ header: () => null }}
+        />
 
         <Stack.Screen
-          name='SiginScreen'
-          component={SigupScreen}
+          name='SignInScreen'
+          component={SignInScreen}
           options={{
             headerBackVisible: false,
-            title: i18n.t('register'),
+            title: i18n.t('sign in'),
             headerTitleAlign: 'center',
             headerTitleStyle: { fontSize: 22, fontWeight: 'bold' }
           }}
+        />
+
+        <Stack.Screen
+          name='SignUpScreen'
+          component={SignUpScreen}
+          options={{
+            title: i18n.t('create a new account'),
+            headerTitleAlign: 'center',
+            headerTitleStyle: { fontSize: 22, fontWeight: 'bold' }
+          }}
+        />
+
+        <Stack.Screen
+          name='ConfirmCodeScreen'
+          component={ConfirmCodeScreen}
+          options={({ route }: any) => ({
+            title: i18n.t('confirm sign up'),
+            headerTitleAlign: 'center',
+            headerTitleStyle: { fontSize: 22, fontWeight: 'bold' },
+            headerBackVisible: !!route?.params?.from
+          })}
         />
 
         <Stack.Screen
