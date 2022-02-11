@@ -4,6 +4,7 @@ import React from 'react'
 import i18n from '../languages/i18n.config'
 import { useForm } from 'react-hook-form'
 import { EMAIL_REGEX } from '../constants'
+import { useNavigation } from '@react-navigation/native'
 
 //  component
 import Input from '../components/common/Input'
@@ -18,12 +19,24 @@ type formData = {
 const SigupScreen = () => {
   const { control, handleSubmit, formState: { errors }, watch } = useForm<formData>()
 
+  const navigation = useNavigation<any>()
+
+  const goConfirmCodeScreen = () => {
+    navigation.navigate('ConfirmCodeScreen', {
+      from: 'SigupScreen'
+    })
+  }
+
   const password = watch('password')
+  const email = watch('email')
 
   console.log(errors)
 
   const submit = (data: formData) => {
     console.log(data)
+    navigation.navigate('ConfirmCodeScreen', {
+      email
+    })
   }
 
   return (
@@ -35,17 +48,18 @@ const SigupScreen = () => {
           name='email'
           control={control}
           rules={{
-            required: { value: true, message: i18n.t('this field is required') },
+            required: { value: true, message: i18n.t('the email is required') },
             pattern: { value: EMAIL_REGEX, message: i18n.t('enter a valid email') }
           }}
           placeholder={i18n.t('email')}
           inputStyles={styles.input}
           inputContainerStyles={styles.inputContainer}
         />
+
         <Input
           name='password'
           rules={{
-            required: { value: true, message: i18n.t('this field is required') },
+            required: { value: true, message: i18n.t('the password is required') },
             minLength: { value: 8, message: i18n.t('password should be minimon 8 characters long') }
           }}
           control={control}
@@ -58,7 +72,6 @@ const SigupScreen = () => {
         <Input
           name='passwordRepeat'
           rules={{
-            required: { value: true, message: i18n.t('this field is required') },
             validate: (value: string) => value === password || i18n.t('password do not match')
           }}
           control={control}
@@ -68,22 +81,7 @@ const SigupScreen = () => {
           inputContainerStyles={styles.inputContainer}
         />
 
-        <View style={styles.footerLinks}>
-          <Button
-            text={i18n.t('confirm code')}
-            onPress={() => console.log('press confirm code')}
-            textStyle={styles.footerText}
-            buttonStyle={[styles.footerButton, styles.confirmCode]}
-          />
-          <Button
-            text={i18n.t('sign in')}
-            onPress={() => console.log('press siging')}
-            textStyle={styles.footerText}
-            buttonStyle={[styles.footerButton, styles.sigin]}
-          />
-        </View>
-
-        <Button text={i18n.t('register')} onPress={handleSubmit(submit)} buttonStyle={styles.buttonSubmit} />
+        <Button text={i18n.t('register')} onPress={handleSubmit(submit)} buttonStyle={styles.submitButton} />
       </View>
     </KeyboardAwareScrollView>
   )
@@ -103,7 +101,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     marginTop: 20,
-    marginBottom: 65
+    marginBottom: 50
   },
 
   input: {
@@ -117,34 +115,9 @@ const styles = StyleSheet.create({
     marginBottom: 35
   },
 
-  footerLinks: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 12,
-    width: '100%'
-  },
-
-  footerText: {
-    color: '#1D98FF',
-    fontSize: 16
-  },
-
-  footerButton: {
-    backgroundColor: 'none',
-    paddingVertical: 0
-  },
-
-  confirmCode: {
-    marginRight: 45,
-    width: 140
-  },
-
-  sigin: {
-    width: 100
-  },
-
-  buttonSubmit: {
-    marginTop: '15%'
+  submitButton: {
+    marginTop: '15%',
+    backgroundColor: '#114788'
   }
 })
 
