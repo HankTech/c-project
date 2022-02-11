@@ -10,7 +10,7 @@ import Button from '../components/common/Button'
 const IntroScreen = () => {
   const navigation = useNavigation<any>()
 
-  const onPress = () => navigation.navigate('SiginScreen')
+  const onPress = () => navigation.navigate('SignInScreen')
 
   return (
     <View style={styles.root}>
