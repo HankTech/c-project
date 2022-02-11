@@ -8,11 +8,15 @@ export const en = {
   'enter a email and password': 'Input a email and password.',
   email: 'Email',
   password: 'Password',
-  'this field is required': 'This field is required',
   'password should be minimon 8 characters long': 'Password should be minimon 8 characters long',
   'enter a valid email': 'Enter a valid email',
   'password repeat': 'Password repeat',
   'password do not match': 'Password do not match',
   'confirm code': 'Confirm code',
-  'sign in': 'Sign in'
+  'sign in': 'Sign in',
+  'create a new account': 'Create a new account',
+  'confirm sign up': 'Confirm sign up',
+  'forgot password': 'Forgot password?',
+  'the email is required': 'The email is required',
+  'the password is required': 'The password is required'
 }

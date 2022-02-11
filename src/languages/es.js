@@ -4,15 +4,19 @@ export const es = {
   continue: 'Continuar',
   'take privacy with you': 'Llévate la privacidad contigo.',
   'be youself in every message': 'Sé tú mismo en cada mensaje.',
-  register: 'Registrarse',
+  register: 'Registrate',
   'enter a email and password': 'Ingrese un correo y una contraseña.',
   email: 'Correo',
   password: 'Contraseña',
-  'this field is required': 'Este campo es obligatorio',
   'password should be minimon 8 characters long': 'La contraseña debe tener minimo 8 caracteres',
   'enter a valid email': 'Ingrese un correo valido',
   'password repeat': 'Repite la contraseña',
   'password do not match': 'Las contraseñas no coinciden',
   'confirm code': 'Confirmar codigo',
-  'sign in': 'Iniciar sesión'
+  'sign in': 'Iniciar sesión',
+  'create a new account': 'Crear una nueva cuenta',
+  'confirm sign up': 'Confirmar Registro',
+  'forgot password': '¿Has olvidado tu contraseña?',
+  'the email is required': 'El correo es requerido',
+  'the password is required': 'The password is required'
 }
