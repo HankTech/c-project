@@ -18,5 +18,9 @@ export const en = {
   'confirm sign up': 'Confirm sign up',
   'forgot password': 'Forgot password?',
   'the email is required': 'The email is required',
-  'the password is required': 'The password is required'
+  'the password is required': 'The password is required',
+  'enter your confirmation code': 'Enter your confirmation code',
+  confirm: 'Confirm',
+  'resend code': 'Resend code',
+  'the confirmation code is required': 'The confirmation code is required'
 }

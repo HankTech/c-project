@@ -18,5 +18,9 @@ export const es = {
   'confirm sign up': 'Confirmar Registro',
   'forgot password': '¿Has olvidado tu contraseña?',
   'the email is required': 'El correo es requerido',
-  'the password is required': 'The password is required'
+  'the password is required': 'The password is required',
+  'enter your confirmation code': 'Ingrese su codigo de confirmación',
+  confirm: 'Confirmar',
+  'resend code': 'Reenviar codigo',
+  'the confirmation code is required': 'El codigo de confirmacion es requerido'
 }
