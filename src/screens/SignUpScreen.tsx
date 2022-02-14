@@ -1,10 +1,11 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Alert } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import React from 'react'
+import React, { useState } from 'react'
 import i18n from '../languages/i18n.config'
 import { useForm } from 'react-hook-form'
 import { EMAIL_REGEX } from '../constants'
 import { useNavigation } from '@react-navigation/native'
+import { Auth } from 'aws-amplify'
 
 //  component
 import Input from '../components/common/Input'
@@ -17,26 +18,44 @@ type formData = {
 }
 
 const SigupScreen = () => {
-  const { control, handleSubmit, formState: { errors }, watch } = useForm<formData>()
+  const { control, handleSubmit, watch, setValue, getValues } = useForm<formData>()
+
+  const [loading, setLoading] = useState(false)
 
   const navigation = useNavigation<any>()
 
-  const goConfirmCodeScreen = () => {
-    navigation.navigate('ConfirmCodeScreen', {
-      from: 'SigupScreen'
-    })
+  const onBlur = () => {
+    const email = getValues('email').trim()
+    setValue('email', email)
   }
 
-  const password = watch('password')
-  const email = watch('email')
+  const pass = watch('password')
 
-  console.log(errors)
+  const onRegisterPressed = async (data: formData) => {
+    const { email, password } = data
 
-  const submit = (data: formData) => {
-    console.log(data)
-    navigation.navigate('ConfirmCodeScreen', {
-      email
-    })
+    if (loading) {
+      return
+    }
+
+    setLoading(true)
+
+    try {
+      await Auth.signUp({
+        username: email,
+        password,
+        attributes: {
+          email,
+          preferred_username: email
+        }
+      })
+      navigation.navigate('ConfirmEmailScreen', { email })
+    } catch (error: any) {
+      console.log(error)
+      Alert.alert('Oops', error.message)
+    }
+
+    setLoading(false)
   }
 
   return (
@@ -65,6 +84,7 @@ const SigupScreen = () => {
           control={control}
           placeholder={i18n.t('password')}
           secureTextEntry
+          onBlur={onBlur}
           inputStyles={styles.input}
           inputContainerStyles={styles.inputContainer}
         />
@@ -72,7 +92,7 @@ const SigupScreen = () => {
         <Input
           name='passwordRepeat'
           rules={{
-            validate: (value: string) => value === password || i18n.t('password do not match')
+            validate: (value: string) => value === pass || i18n.t('password do not match')
           }}
           control={control}
           placeholder={i18n.t('password repeat')}
@@ -81,7 +101,7 @@ const SigupScreen = () => {
           inputContainerStyles={styles.inputContainer}
         />
 
-        <Button text={i18n.t('register')} onPress={handleSubmit(submit)} buttonStyle={styles.submitButton} />
+        <Button text={i18n.t('register')} onPress={handleSubmit(onRegisterPressed)} buttonStyle={styles.submitButton} loading={loading} />
       </View>
     </KeyboardAwareScrollView>
   )
