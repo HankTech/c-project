@@ -1,5 +1,5 @@
 import { StyleSheet, View, Alert } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import i18n from '../languages/i18n.config'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -19,6 +19,8 @@ type formData = {
 const SignInScreen = () => {
   const { control, handleSubmit, getValues, setValue } = useForm<formData>()
 
+  const [loading, setLoading] = useState(false)
+
   const navigation = useNavigation<any>()
 
   const onBlur = () => {
@@ -29,13 +31,18 @@ const SignInScreen = () => {
   const goToSignUp = () => navigation.navigate('SignUpScreen')
 
   const handleButton = async (data: formData) => {
-    try {
-      const response = await Auth.signIn(data.email, data.password)
+    if (loading) {
+      return
+    }
 
-      console.log(response)
+    setLoading(true)
+
+    try {
+      await Auth.signIn(data.email, data.password)
     } catch (error: any) {
       Alert.alert(error.message)
     }
+    setLoading(false)
   }
 
   return (
@@ -70,6 +77,7 @@ const SignInScreen = () => {
         <Button
           text={i18n.t('continue')}
           onPress={handleSubmit(handleButton)}
+          loading={loading}
         />
 
         <View style={styles.footerLinks}>
