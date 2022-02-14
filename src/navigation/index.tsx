@@ -12,7 +12,7 @@ import SignInScreen from '../screens/SignInScreen'
 import SignUpScreen from '../screens/SignUpScreen'
 import HomeScreen from '../screens/HomeScreen'
 import ChatRoomScreen from '../screens/ChatRoomScreen'
-import ConfirmCodeScreen from '../screens/ConfirmCodeScreen'
+import ConfirmEmailScreen from '../screens/ConfirmEmailScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -48,8 +48,8 @@ const Navigation = () => {
         />
 
         <Stack.Screen
-          name='ConfirmCodeScreen'
-          component={ConfirmCodeScreen}
+          name='ConfirmEmailScreen'
+          component={ConfirmEmailScreen}
           options={({ route }: any) => ({
             title: i18n.t('confirm sign up'),
             headerTitleAlign: 'center',

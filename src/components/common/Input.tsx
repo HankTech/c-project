@@ -8,12 +8,13 @@ interface inputProps {
   inputStyles?: TextInputProps['style'],
   inputContainerStyles?: TextInputProps['style'],
   secureTextEntry?: boolean,
+  onBlur?: TextInputProps['onBlur'],
   control: any,
   name: string,
   rules?: object
 }
 
-const Input = ({ name, control, rules = {}, placeholder, inputStyles, inputContainerStyles, secureTextEntry = false }: inputProps) => {
+const Input = ({ name, control, rules = {}, placeholder, inputStyles, inputContainerStyles, secureTextEntry = false, onBlur }: inputProps) => {
   const [openEye, setOpenEye] = useState(false)
 
   const onPressEye = () => {
@@ -25,7 +26,7 @@ const Input = ({ name, control, rules = {}, placeholder, inputStyles, inputConta
       name={name}
       control={control}
       rules={rules}
-      render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
+      render={({ field: { value, onChange }, fieldState: { error } }) => (
         <View style={[inputContainerStyles]}>
           <TextInput
             style={[styles.input, inputStyles, error && { borderColor: '#FF1D1D' }]}

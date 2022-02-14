@@ -5,10 +5,11 @@ interface buttonProps {
   text: string,
   buttonStyle?: TouchableOpacityProps['style'],
   textStyle?: TextProps['style'],
-  onPress: Function
+  onPress: Function,
+  loading?: boolean
 }
 
-const Button = ({ text, buttonStyle, textStyle, onPress }: buttonProps) => {
+const Button = ({ text, buttonStyle, textStyle, onPress, loading }: buttonProps) => {
   return (
     <TouchableOpacity style={[styles.container, buttonStyle]} onPress={() => onPress()}>
       <Text style={[styles.text, textStyle]}>{text}</Text>

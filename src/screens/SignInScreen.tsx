@@ -1,24 +1,41 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View, Alert } from 'react-native'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import i18n from '../languages/i18n.config'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { useNavigation } from '@react-navigation/native'
 import { EMAIL_REGEX } from '../constants'
+import { Auth } from 'aws-amplify'
 
 //  components
 import Input from '../components/common/Input'
 import Button from '../components/common/Button'
 
+type formData = {
+  email: string,
+  password: string,
+}
+
 const SignInScreen = () => {
-  const { control, handleSubmit } = useForm()
+  const { control, handleSubmit, getValues, setValue } = useForm<formData>()
 
   const navigation = useNavigation<any>()
 
+  const onBlur = () => {
+    const email = getValues('email').trim()
+    setValue('email', email)
+  }
+
   const goToSignUp = () => navigation.navigate('SignUpScreen')
 
-  const handleButton = () => {
-    console.log('press')
+  const handleButton = async (data: formData) => {
+    try {
+      const response = await Auth.signIn(data.email, data.password)
+
+      console.log(response)
+    } catch (error: any) {
+      Alert.alert(error.message)
+    }
   }
 
   return (
@@ -32,6 +49,7 @@ const SignInScreen = () => {
             required: { value: true, message: i18n.t('the email is required') },
             pattern: { value: EMAIL_REGEX, message: i18n.t('enter a valid email') }
           }}
+          onBlur={onBlur}
           inputStyles={styles.input}
           inputContainerStyles={styles.email}
         />
@@ -52,13 +70,12 @@ const SignInScreen = () => {
         <Button
           text={i18n.t('continue')}
           onPress={handleSubmit(handleButton)}
-          buttonStyle={styles.submitButton}
         />
 
         <View style={styles.footerLinks}>
           <Button
             text={i18n.t('forgot password')}
-            onPress={() => console.log('press')}
+            onPress={() => console.log('olvidar contraseña')}
             textStyle={styles.footerText}
             buttonStyle={[styles.footerButton, styles.forgotPassword]}
           />
@@ -100,10 +117,6 @@ const styles = StyleSheet.create({
     marginBottom: '25%'
   },
 
-  submitButton: {
-    backgroundColor: '#114788'
-  },
-
   footerLinks: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -111,7 +124,7 @@ const styles = StyleSheet.create({
   },
 
   footerText: {
-    color: '#1D98FF',
+    color: '#338DFF',
     fontSize: 16
   },
 

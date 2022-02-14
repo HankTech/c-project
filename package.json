@@ -11,9 +11,14 @@
     "devtools": "react-devtools"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.16.1",
+    "@react-native-community/netinfo": "^8.0.0",
+    "@react-native-picker/picker": "^2.2.1",
     "@react-navigation/native": "6.0.6",
     "@react-navigation/native-stack": "6.2.5",
+    "amazon-cognito-identity-js": "^5.2.6",
     "aws-amplify": "^4.3.14",
+    "aws-amplify-react-native": "^6.0.2",
     "i18n-js": "^3.8.0",
     "react": "17.0.2",
     "react-hook-form": "^7.26.1",
