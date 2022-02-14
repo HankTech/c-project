@@ -1,5 +1,6 @@
 import { TouchableOpacity, Text, StyleSheet, TouchableOpacityProps, TextProps } from 'react-native'
 import React from 'react'
+import Loading from './Loading'
 
 interface buttonProps {
   text: string,
@@ -12,7 +13,7 @@ interface buttonProps {
 const Button = ({ text, buttonStyle, textStyle, onPress, loading }: buttonProps) => {
   return (
     <TouchableOpacity style={[styles.container, buttonStyle]} onPress={() => onPress()}>
-      <Text style={[styles.text, textStyle]}>{text}</Text>
+      {loading ? <Loading size={30} color='white' /> : <Text style={[styles.text, textStyle]}>{text}</Text>}
     </TouchableOpacity>
   )
 }
@@ -21,8 +22,10 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     backgroundColor: '#338DFF',
-    paddingVertical: 15,
-    borderRadius: 7
+    borderRadius: 7,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 45
   },
 
   text: {
