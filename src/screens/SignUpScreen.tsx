@@ -101,7 +101,12 @@ const SigupScreen = () => {
           inputContainerStyles={styles.inputContainer}
         />
 
-        <Button text={i18n.t('register')} onPress={handleSubmit(onRegisterPressed)} buttonStyle={styles.submitButton} loading={loading} />
+        <Button
+          text={i18n.t('register')}
+          onPress={handleSubmit(onRegisterPressed)}
+          buttonStyle={styles.submitButton}
+          loading={loading}
+        />
       </View>
     </KeyboardAwareScrollView>
   )
@@ -109,7 +114,8 @@ const SigupScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: 'white'
   },
 
   inner: {
@@ -136,7 +142,8 @@ const styles = StyleSheet.create({
   },
 
   submitButton: {
-    marginTop: '15%'
+    marginTop: '15%',
+    alignSelf: 'center'
   }
 })
 

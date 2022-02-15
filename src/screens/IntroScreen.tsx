@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     paddingBottom: 25,
-    paddingHorizontal: 40
+    paddingHorizontal: 35
   },
 
   image: {

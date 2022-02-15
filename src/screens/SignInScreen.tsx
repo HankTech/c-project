@@ -1,4 +1,4 @@
-import { StyleSheet, View, Alert } from 'react-native'
+import { StyleSheet, View, Alert, TouchableOpacity, Text } from 'react-native'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import i18n from '../languages/i18n.config'
@@ -30,6 +30,8 @@ const SignInScreen = () => {
 
   const goToSignUp = () => navigation.navigate('SignUpScreen')
 
+  const goToConfirmEmail = () => navigation.navigate('ConfirmEmailScreen')
+
   const handleButton = async (data: formData) => {
     if (loading) {
       return
@@ -39,6 +41,7 @@ const SignInScreen = () => {
 
     try {
       await Auth.signIn(data.email, data.password)
+      navigation.navigate('HomeScreen')
     } catch (error: any) {
       Alert.alert(error.message)
     }
@@ -58,7 +61,7 @@ const SignInScreen = () => {
           }}
           onBlur={onBlur}
           inputStyles={styles.input}
-          inputContainerStyles={styles.email}
+          inputContainerStyles={styles.emailInput}
         />
 
         <Input
@@ -71,29 +74,33 @@ const SignInScreen = () => {
           }}
           secureTextEntry
           inputStyles={styles.input}
-          inputContainerStyles={styles.password}
+          inputContainerStyles={styles.passwordInput}
         />
 
         <Button
           text={i18n.t('continue')}
           onPress={handleSubmit(handleButton)}
           loading={loading}
+          buttonStyle={styles.buttonSubmit}
         />
 
-        <View style={styles.footerLinks}>
+        <View style={styles.buttonsGroup}>
           <Button
-            text={i18n.t('forgot password')}
-            onPress={() => console.log('olvidar contraseña')}
+            text='Confirm email'
+            onPress={goToConfirmEmail}
             textStyle={styles.footerText}
-            buttonStyle={[styles.footerButton, styles.forgotPassword]}
+            buttonStyle={[styles.footerButton, styles.confirmEmail]}
           />
           <Button
             text={i18n.t('register')}
             onPress={goToSignUp}
             textStyle={styles.footerText}
-            buttonStyle={[styles.footerButton, styles.signUp]}
+            buttonStyle={[styles.footerButton, styles.register]}
           />
         </View>
+        <TouchableOpacity style={{ alignSelf: 'center' }}>
+          <Text style={styles.forgotPassword}>{i18n.t('forgot password')}</Text>
+        </TouchableOpacity>
       </View>
     </KeyboardAwareScrollView>
   )
@@ -101,7 +108,8 @@ const SignInScreen = () => {
 
 const styles = StyleSheet.create({
   root: {
-    flex: 1
+    flex: 1,
+    backgroundColor: 'white'
   },
 
   container: {
@@ -116,39 +124,52 @@ const styles = StyleSheet.create({
     paddingLeft: 10
   },
 
-  email: {
+  emailInput: {
     marginTop: 35,
     marginBottom: 55
   },
 
-  password: {
+  passwordInput: {
     marginBottom: '25%'
   },
 
-  footerLinks: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 35
+  buttonSubmit: {
+    width: '100%'
+  },
+
+  buttonsGroup: {
+    flexDirection: 'row',
+    width: 350,
+    justifyContent: 'space-between',
+    marginTop: 35,
+    alignSelf: 'center',
+    marginBottom: 25
   },
 
   footerText: {
     color: '#338DFF',
-    fontSize: 16
+    fontSize: 17
   },
 
   footerButton: {
-    backgroundColor: 'none',
+    backgroundColor: 'transparent',
     paddingVertical: 0
   },
 
-  forgotPassword: {
-    maxWidth: '70%',
-    marginBottom: 35
+  confirmEmail: {
+    width: '40%',
+    height: 25
   },
 
-  signUp: {
-    alignSelf: 'center',
-    width: '30%'
+  forgotPassword: {
+    fontSize: 17,
+    color: '#338DFF',
+    fontWeight: '500'
+  },
+
+  register: {
+    width: '25%',
+    height: 25
   }
 })
 

@@ -22,5 +22,6 @@ export const es = {
   'enter your confirmation code': 'Ingrese su codigo de confirmación',
   confirm: 'Confirmar',
   'resend code': 'Reenviar codigo',
-  'the confirmation code is required': 'El codigo de confirmacion es requerido'
+  'the confirmation code is required': 'El codigo de confirmacion es requerido',
+  'susscess code was resent your email': 'Su codigo fue reenviado a su correo electronico'
 }

@@ -1,4 +1,5 @@
-import { View, Text, StyleSheet, Alert } from 'react-native'
+import { View, StyleSheet, Alert } from 'react-native'
+import { useRoute, useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import i18n from '../languages/i18n.config'
@@ -10,35 +11,62 @@ import { Auth } from 'aws-amplify'
 import Input from '../components/common/Input'
 import Button from '../components/common/Button'
 
-interface confirmCodeScreenPros {
-  email: string
+type formData = {
+  email: string,
+  code: string
 }
 
-const ConfirmCodeScreen = ({ email }: confirmCodeScreenPros) => {
-  const { control, handleSubmit } = useForm({ defaultValues: { email } })
-  const [loading, setLoading] = useState(false)
+const ConfirmCodeScreen = () => {
+  const route = useRoute<any>()
 
-  const onConfirmePressed = async (data) => {
-    if (loading) {
+  const navigation = useNavigation<any>()
+
+  const { control, handleSubmit, watch } = useForm<formData>({ defaultValues: { email: route.params?.email } })
+
+  const email = watch('email')
+
+  const [loadingOnConfirm, setLoadingOnConfirm] = useState(false)
+  const [loadingOnResend, setLoadingOnResend] = useState(false)
+
+  const onConfirmePressed = async (data: formData) => {
+    if (loadingOnConfirm) {
       return
     }
 
-    setLoading(true)
+    setLoadingOnConfirm(true)
 
     try {
-      // await Auth.confirmSignUp()
+      await Auth.confirmSignUp(data.email, data.code)
+      navigation.navigate('SignInScreen')
     } catch (error: any) {
       console.log(error)
       Alert.alert('Oops', error.message)
     }
 
-    setLoading(false)
+    setLoadingOnConfirm(false)
+  }
+
+  const onResendPressed = async () => {
+    if (loadingOnResend) {
+      return
+    }
+
+    setLoadingOnResend(true)
+
+    try {
+      await Auth.resendSignUp(email)
+      Alert.alert('susscess code was resent your email')
+    } catch (error: any) {
+      console.log(error)
+      Alert.alert('Oops', error.message)
+    }
+
+    setLoadingOnResend(false)
   }
 
   return (
     <KeyboardAwareScrollView style={styles.container}>
       <View style={styles.inner}>
-        <Text style={styles.subtitle}>Confirm your email</Text>
         <Input
           name='email'
           control={control}
@@ -52,7 +80,7 @@ const ConfirmCodeScreen = ({ email }: confirmCodeScreenPros) => {
         />
 
         <Input
-          name='confirmCode'
+          name='code'
           control={control}
           rules={{
             required: { value: true, message: i18n.t('the confirmation code is required') }
@@ -62,8 +90,20 @@ const ConfirmCodeScreen = ({ email }: confirmCodeScreenPros) => {
           inputContainerStyles={styles.inputContainer}
         />
 
-        <Button text={i18n.t('confirm')} onPress={handleSubmit(onConfirmePressed)} buttonStyle={styles.confirmButton} loading={loading} />
-        <Button text={i18n.t('resend code')} buttonStyle={styles.resendCode} textStyle={styles.textResendCode} loading={loading} />
+        <Button
+          text={i18n.t('confirm')}
+          onPress={handleSubmit(onConfirmePressed)}
+          buttonStyle={styles.confirmButton}
+          loading={loadingOnConfirm}
+        />
+        <Button
+          text={i18n.t('resend code')}
+          onPress={onResendPressed}
+          buttonStyle={styles.resendCode}
+          textStyle={styles.textResendCode}
+          loading={loadingOnResend}
+          loadingColor='#338DFF'
+        />
 
       </View>
     </KeyboardAwareScrollView>
@@ -72,19 +112,14 @@ const ConfirmCodeScreen = ({ email }: confirmCodeScreenPros) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: 'white'
   },
 
   inner: {
+    paddingTop: 60,
     paddingBottom: 15,
     paddingHorizontal: 10
-  },
-
-  subtitle: {
-    fontSize: 18,
-    textAlign: 'center',
-    marginTop: 20,
-    marginBottom: 50
   },
 
   inputContainer: {
@@ -100,13 +135,17 @@ const styles = StyleSheet.create({
 
   confirmButton: {
     marginTop: '15%',
-    marginBottom: 25
+    alignSelf: 'center',
+    marginBottom: 25,
+    width: '100%'
   },
 
   resendCode: {
     backgroundColor: 'white',
     borderColor: '#338DFF',
-    borderWidth: 1
+    borderWidth: 1,
+    alignSelf: 'center',
+    width: '100%'
   },
 
   textResendCode: {

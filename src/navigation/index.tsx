@@ -33,7 +33,8 @@ const Navigation = () => {
             headerBackVisible: false,
             title: i18n.t('sign in'),
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 22, fontWeight: 'bold' }
+            headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
+            headerShadowVisible: false
           }}
         />
 
@@ -43,7 +44,8 @@ const Navigation = () => {
           options={{
             title: i18n.t('create a new account'),
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 22, fontWeight: 'bold' }
+            headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
+            headerShadowVisible: false
           }}
         />
 
@@ -53,7 +55,8 @@ const Navigation = () => {
           options={({ route }: any) => ({
             title: i18n.t('confirm sign up'),
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 22, fontWeight: 'bold' },
+            headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
+            headerShadowVisible: false,
             headerBackVisible: !!route?.params?.from
           })}
         />
@@ -64,7 +67,8 @@ const Navigation = () => {
           options={{
             title: 'the C project',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 22, fontWeight: 'bold' },
+            headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
+            headerShadowVisible: false,
             headerLeft: () => (
               <FastImage
                 source={{ uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg' }}
@@ -81,8 +85,7 @@ const Navigation = () => {
                   <Feather name='edit-2' color='black' size={24} />
                 </TouchableOpacity>
               </View>
-            ),
-            headerShadowVisible: false
+            )
           }}
         />
         <Stack.Screen
@@ -91,7 +94,8 @@ const Navigation = () => {
           options={(props) => (
             {
               title: props.title,
-              headerTitleStyle: { fontSize: 22, fontWeight: 'bold' },
+              headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
+              headerShadowVisible: false,
               headerLeft: () => (
                 <FastImage
                   source={{ uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg' }}
@@ -109,7 +113,6 @@ const Navigation = () => {
                   </TouchableOpacity>
                 </View>
               ),
-              headerShadowVisible: false,
               headerBackVisible: true
             }
           )}
