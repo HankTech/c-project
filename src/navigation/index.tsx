@@ -102,10 +102,10 @@ const Navigation = () => {
               <Stack.Screen
                 name='ChatRoomScreen'
                 component={ChatRoomScreen}
-                options={(props) => (
+                options={({ title }: any) => (
                   {
-                    title: props.title,
-                    headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
+                    title: title,
+                    headerTitleStyle: { fontSize: 20, fontWeight: 'bold' },
                     headerShadowVisible: false,
                     headerLeft: () => (
                       <FastImage
@@ -145,7 +145,7 @@ const Navigation = () => {
                   headerBackVisible: false,
                   title: i18n.t('sign in'),
                   headerTitleAlign: 'center',
-                  headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
+                  headerTitleStyle: { fontSize: 20, fontWeight: 'bold' },
                   headerShadowVisible: false
                 }}
               />
@@ -156,7 +156,7 @@ const Navigation = () => {
                 options={{
                   title: i18n.t('create a new account'),
                   headerTitleAlign: 'center',
-                  headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
+                  headerTitleStyle: { fontSize: 20, fontWeight: 'bold' },
                   headerShadowVisible: false
                 }}
               />
@@ -167,7 +167,7 @@ const Navigation = () => {
                 options={({ route }: any) => ({
                   title: i18n.t('confirm sign up'),
                   headerTitleAlign: 'center',
-                  headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
+                  headerTitleStyle: { fontSize: 20, fontWeight: 'bold' },
                   headerShadowVisible: false,
                   headerBackVisible: !!route?.params?.from
                 })}
@@ -179,7 +179,7 @@ const Navigation = () => {
                 options={({ route }: any) => ({
                   title: i18n.t('reset your password'),
                   headerTitleAlign: 'center',
-                  headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
+                  headerTitleStyle: { fontSize: 20, fontWeight: 'bold' },
                   headerShadowVisible: false
                 })}
               />
@@ -190,7 +190,7 @@ const Navigation = () => {
                 options={({ route }: any) => ({
                   title: i18n.t('reset your password'),
                   headerTitleAlign: 'center',
-                  headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
+                  headerTitleStyle: { fontSize: 20, fontWeight: 'bold' },
                   headerShadowVisible: false,
                   headerBackVisible: false
                 })}
