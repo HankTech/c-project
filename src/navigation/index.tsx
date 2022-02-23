@@ -19,6 +19,14 @@ import NewPasswordScreen from '../screens/NewPasswordScreen'
 
 const Stack = createNativeStackNavigator()
 
+const AppLoading = () => {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <ActivityIndicator style={{ position: 'absolute' }} size={36} />
+    </View>
+  )
+}
+
 const Navigation = () => {
   const [user, setUser] = useState<any>(undefined)
 
@@ -50,9 +58,11 @@ const Navigation = () => {
 
   if (user === undefined) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size={36} />
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name='aplashScreen' options={{ header: () => null }} component={AppLoading} />
+        </Stack.Navigator>
+      </NavigationContainer>
     )
   }
 
@@ -66,9 +76,9 @@ const Navigation = () => {
                 name='HomeScreen'
                 component={HomeScreen}
                 options={{
-                  title: 'the C project',
+                  title: 'Project C',
                   headerTitleAlign: 'center',
-                  headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
+                  headerTitleStyle: { fontSize: 20, fontWeight: 'bold' },
                   headerShadowVisible: false,
                   headerLeft: () => (
                     <FastImage
