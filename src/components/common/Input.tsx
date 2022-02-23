@@ -11,10 +11,12 @@ interface inputProps {
   onBlur?: TextInputProps['onBlur'],
   control: any,
   name: string,
-  rules?: object
+  rules?: object,
+  autoCapitalize?: TextInputProps['autoCapitalize'],
+  blurOnSubmit?: TextInputProps['blurOnSubmit']
 }
 
-const Input = ({ name, control, rules = {}, placeholder, inputStyles, inputContainerStyles, secureTextEntry = false, onBlur }: inputProps) => {
+const Input = ({ name, control, rules = {}, placeholder, inputStyles, inputContainerStyles, secureTextEntry = false, onBlur, autoCapitalize, blurOnSubmit }: inputProps) => {
   const [openEye, setOpenEye] = useState(false)
 
   const onPressEye = () => {
@@ -35,6 +37,8 @@ const Input = ({ name, control, rules = {}, placeholder, inputStyles, inputConta
             onChangeText={onChange}
             value={value}
             onBlur={onBlur}
+            autoCapitalize={autoCapitalize}
+            blurOnSubmit={blurOnSubmit}
           />
 
           {secureTextEntry && (
