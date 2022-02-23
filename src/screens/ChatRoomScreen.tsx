@@ -9,7 +9,7 @@ import MessageInput from '../components/ChatRoom/MessageInput'
 import chatRoomData from '../assets/dummy-data/Chats'
 
 const ChatRoomScreen = () => {
-  const route = useRoute()
+  const route = useRoute<any>()
   const navigation = useNavigation()
 
   useEffect(() => {
