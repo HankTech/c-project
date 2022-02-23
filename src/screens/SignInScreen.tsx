@@ -32,6 +32,8 @@ const SignInScreen = () => {
 
   const goToConfirmEmail = () => navigation.navigate('ConfirmEmailScreen')
 
+  const goToForgotPassword = () => navigation.navigate('ForgotPasswordScreen')
+
   const handleButton = async (data: formData) => {
     if (loading) {
       return
@@ -98,8 +100,8 @@ const SignInScreen = () => {
             buttonStyle={[styles.footerButton, styles.register]}
           />
         </View>
-        <TouchableOpacity style={{ alignSelf: 'center' }}>
-          <Text style={styles.forgotPassword}>{i18n.t('forgot password')}</Text>
+        <TouchableOpacity style={{ alignSelf: 'center' }} onPress={goToForgotPassword}>
+          <Text style={styles.forgotPassword}>{i18n.t('forgot your password')}</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAwareScrollView>

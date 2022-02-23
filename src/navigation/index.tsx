@@ -13,6 +13,7 @@ import SignUpScreen from '../screens/SignUpScreen'
 import HomeScreen from '../screens/HomeScreen'
 import ChatRoomScreen from '../screens/ChatRoomScreen'
 import ConfirmEmailScreen from '../screens/ConfirmEmailScreen'
+import ForgotPasswordScreen from '../screens/ForgotPasswordScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -58,6 +59,17 @@ const Navigation = () => {
             headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
             headerShadowVisible: false,
             headerBackVisible: !!route?.params?.from
+          })}
+        />
+
+        <Stack.Screen
+          name='ForgotPasswordScreen'
+          component={ForgotPasswordScreen}
+          options={({ route }: any) => ({
+            title: i18n.t('reset your password'),
+            headerTitleAlign: 'center',
+            headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
+            headerShadowVisible: false
           })}
         />
 

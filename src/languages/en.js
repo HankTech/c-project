@@ -16,12 +16,13 @@ export const en = {
   'sign in': 'Sign in',
   'create a new account': 'Create a new account',
   'confirm sign up': 'Confirm sign up',
-  'forgot password': 'Forgot password?',
+  'forgot your password': 'Forgot your password?',
   'the email is required': 'The email is required',
   'the password is required': 'The password is required',
   'enter your confirmation code': 'Enter your confirmation code',
   confirm: 'Confirm',
   'resend code': 'Resend code',
   'the confirmation code is required': 'The confirmation code is required',
-  'susscess code was resent your email': 'Susscess, code was resent your email'
+  'susscess code was resent your email': 'Susscess, code was resent your email',
+  'reset your password': 'reset your password'
 }
