@@ -37,8 +37,10 @@ const Navigation = () => {
   }, [])
 
   useEffect(() => {
-    const listener = (data) => {
-      console.log(data)
+    const listener = (data: any) => {
+      if (data.payload.event === 'signIn' || data.payload.event === 'signOut') {
+        checkUser()
+      }
     }
 
     Hub.listen('auth', listener)
