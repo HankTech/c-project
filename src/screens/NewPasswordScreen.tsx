@@ -11,7 +11,7 @@ import i18n from '../languages/i18n.config'
 import Input from '../components/common/Input'
 import Button from '../components/common/Button'
 
-const ForgotPasswordScreen = () => {
+const NewPasswordScreen = () => {
   const { control, handleSubmit, getValues, setValue } = useForm()
   const navigation = useNavigation<any>()
 
@@ -20,13 +20,12 @@ const ForgotPasswordScreen = () => {
     setValue('email', email)
   }
 
-  const onSendPressed = async (data: any) => {
+  const onSubmitPressed = async (data: any) => {
     try {
-      const response = await Auth.forgotPassword(data.email)
-      console.log(response)
-      navigation.navigate('NewPasswordScreen')
+      await Auth.forgotPasswordSubmit(data.email, data.code, data.password)
+      navigation.navigate('SignInScreen')
     } catch (error: any) {
-      Alert.alert('Opps', error?.message)
+      Alert.alert('Opps', error.message)
     }
   }
 
@@ -35,22 +34,45 @@ const ForgotPasswordScreen = () => {
       <View style={styles.container}>
         <Input
           control={control}
+          name='code'
+          placeholder='Code'
+          inputStyles={styles.input}
+          inputContainerStyles={styles.inputContainer}
+          autoCapitalize='none'
+          rules={{
+            required: { value: true, message: 'code is required' }
+          }}
+        />
+
+        <Input
+          control={control}
           name='email'
           placeholder='email'
           inputStyles={styles.input}
-          inputContainerStyles={styles.forgotPasswordInput}
           autoCapitalize='none'
-          onBlur={onBlur}
-          blurOnSubmit
           rules={{
             required: { value: true, message: i18n.t('the email is required') },
             pattern: { value: EMAIL_REGEX, message: i18n.t('enter a valid email') }
           }}
+          onBlur={onBlur}
+        />
+
+        <Input
+          name='password'
+          control={control}
+          placeholder='Enter your new password'
+          rules={{
+            required: { value: true, message: i18n.t('the password is required') },
+            minLength: { value: 8, message: i18n.t('password should be minimon 8 characters long') }
+          }}
+          secureTextEntry
+          inputStyles={styles.input}
+          inputContainerStyles={styles.inputContainer}
         />
 
         <Button
-          text='Send'
-          onPress={handleSubmit(onSendPressed)}
+          text='Submit'
+          onPress={handleSubmit(onSubmitPressed)}
           buttonStyle={styles.sendButton}
         />
       </View>
@@ -76,14 +98,15 @@ const styles = StyleSheet.create({
     paddingLeft: 10
   },
 
-  forgotPasswordInput: {
+  inputContainer: {
     marginTop: 35,
-    marginBottom: 55
+    marginBottom: 35
   },
 
   sendButton: {
-    alignSelf: 'center'
+    alignSelf: 'center',
+    marginTop: 25
   }
 })
 
-export default ForgotPasswordScreen
+export default NewPasswordScreen

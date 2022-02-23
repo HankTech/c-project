@@ -14,6 +14,7 @@ import HomeScreen from '../screens/HomeScreen'
 import ChatRoomScreen from '../screens/ChatRoomScreen'
 import ConfirmEmailScreen from '../screens/ConfirmEmailScreen'
 import ForgotPasswordScreen from '../screens/ForgotPasswordScreen'
+import NewPasswordScreen from '../screens/NewPasswordScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -70,6 +71,18 @@ const Navigation = () => {
             headerTitleAlign: 'center',
             headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
             headerShadowVisible: false
+          })}
+        />
+
+        <Stack.Screen
+          name='NewPasswordScreen'
+          component={NewPasswordScreen}
+          options={({ route }: any) => ({
+            title: i18n.t('reset your password'),
+            headerTitleAlign: 'center',
+            headerTitleStyle: { fontSize: 24, fontWeight: 'bold' },
+            headerShadowVisible: false,
+            headerBackVisible: false
           })}
         />
 
