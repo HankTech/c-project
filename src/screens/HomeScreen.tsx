@@ -1,11 +1,18 @@
 import React from 'react'
+import { FlatList } from 'react-native'
 
 //  components
-import ChatList from '../components/Home/ChatList'
+import ChatRoomItem from '../components/Home/ChatRoomItem'
+
+import chatRoomsData from '../assets/dummy-data/ChatRooms'
 
 const HomeScreen = () => {
   return (
-    <ChatList />
+    <FlatList
+      data={chatRoomsData}
+      renderItem={({ item }) => <ChatRoomItem chatRoom={item} />}
+      showsVerticalScrollIndicator={false}
+    />
   )
 }
 
