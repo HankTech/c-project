@@ -4,7 +4,7 @@ import { FlatList } from 'react-native'
 //  components
 import ChatRoomItem from '../components/Home/ChatRoomItem'
 
-import chatRoomsData from '../assets/dummy-data/ChatRooms'
+import chatRoomsData from '../../assets/dummy-data/ChatRooms'
 
 const HomeScreen = () => {
   return (

@@ -6,7 +6,7 @@ import { useRoute, useNavigation } from '@react-navigation/native'
 import Message from '../components/ChatRoom/Message'
 import MessageInput from '../components/ChatRoom/MessageInput'
 
-import chatRoomData from '../assets/dummy-data/Chats'
+import chatRoomData from '../../assets/dummy-data/Chats'
 
 const ChatRoomScreen = () => {
   const route = useRoute<any>()
