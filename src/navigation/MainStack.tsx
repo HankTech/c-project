@@ -7,7 +7,7 @@ import Feather from 'react-native-vector-icons/Feather'
 //  screens
 import HomeScreen from '../screens/HomeScreen'
 import ChatRoomScreen from '../screens/ChatRoomScreen'
-import UsersScreen from '../screens/UsersScreen'
+import Users from '../screens/Users'
 
 const Stack = createNativeStackNavigator()
 
@@ -21,7 +21,7 @@ const MainStack = () => {
           {
             title: 'Project C',
             headerTitleAlign: 'center',
-            headerTitleStyle: { fontSize: 20, fontWeight: 'bold' },
+            headerTitleStyle: { fontSize: 22, fontFamily: 'Roboto-Bold' },
             headerShadowVisible: false,
             headerLeft: () => (
               <FastImage
@@ -77,7 +77,11 @@ const MainStack = () => {
 
       <Stack.Screen
         name='UsersScreen'
-        component={UsersScreen}
+        component={Users}
+        options={{
+          headerTitle: 'Users',
+          headerTitleStyle: { fontSize: 22, fontFamily: 'Roboto-Bold' }
+        }}
       />
     </Stack.Navigator>
   )
