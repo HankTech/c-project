@@ -1,4 +1,4 @@
-package com.projectc;
+package com.the.c.project;
 
 import com.facebook.react.ReactActivity;
 
