@@ -1,11 +1,11 @@
-type Message @model @auth(rules: [{allow: public}]) {
+type Message @model @auth(rules: [{allow: public}, {allow: private}]) {
   id: ID!
   content: String!
   userID: ID! @index(name: "byUser")
   chatroomID: ID! @index(name: "byChatRoom")
 }
 
-type ChatRoom @model @auth(rules: [{allow: public}]) {
+type ChatRoom @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}]) {
   id: ID!
   newMessage: Int
   LastMessage: Message @hasOne
@@ -13,10 +13,10 @@ type ChatRoom @model @auth(rules: [{allow: public}]) {
   ChatRoomUsers: [User] @manyToMany(relationName: "UserChatRoom")
 }
 
-type User @model @auth(rules: [{allow: public}]) {
+type User @model @auth(rules: [{allow: public}, {allow: private}]) {
   id: ID!
   name: String
   status: String
-  Messages: [Message] @hasMany(indexName: "byUser", fields: ["id"])
   Chatrooms: [ChatRoom] @manyToMany(relationName: "UserChatRoom")
 }
+ 
