@@ -1,8 +1,12 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"7.6.22\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
+  "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"7.6.26\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
-    "GROUP": {
+    "DOMAINBLACKLIST": {
+      "Type": "String",
+      "Default": ""
+    },
+    "DOMAINWHITELIST": {
       "Type": "String",
       "Default": ""
     },
@@ -67,12 +71,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "thecprojectPostConfirmation",
+            "TheProjectCPreSignup",
             {
               "Fn::Join": [
                 "",
                 [
-                  "thecprojectPostConfirmation",
+                  "TheProjectCPreSignup",
                   "-",
                   {
                     "Ref": "env"
@@ -93,8 +97,11 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "GROUP": {
-              "Ref": "GROUP"
+            "DOMAINWHITELIST": {
+              "Ref": "DOMAINWHITELIST"
+            },
+            "DOMAINBLACKLIST": {
+              "Ref": "DOMAINBLACKLIST"
             }
           }
         },
@@ -122,12 +129,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "thecprojectPostConfirmation",
+            "TheProjectCPreSignup",
             {
               "Fn::Join": [
                 "",
                 [
-                  "thecprojectPostConfirmation",
+                  "TheProjectCPreSignup",
                   "-",
                   {
                     "Ref": "env"

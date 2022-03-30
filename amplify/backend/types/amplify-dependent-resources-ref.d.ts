@@ -1,8 +1,13 @@
 export type AmplifyDependentResourcesAttributes = {
+    "api": {
+        "TheProjectC": {
+            "GraphQLAPIKeyOutput": "string",
+            "GraphQLAPIIdOutput": "string",
+            "GraphQLAPIEndpointOutput": "string"
+        }
+    },
     "auth": {
-        "thecproject": {
-            "IdentityPoolId": "string",
-            "IdentityPoolName": "string",
+        "TheProjectC": {
             "UserPoolId": "string",
             "UserPoolArn": "string",
             "UserPoolName": "string",
@@ -10,15 +15,8 @@ export type AmplifyDependentResourcesAttributes = {
             "AppClientID": "string"
         }
     },
-    "api": {
-        "thecproject": {
-            "GraphQLAPIKeyOutput": "string",
-            "GraphQLAPIIdOutput": "string",
-            "GraphQLAPIEndpointOutput": "string"
-        }
-    },
     "function": {
-        "thecprojectPostConfirmation": {
+        "TheProjectCPreSignup": {
             "Name": "string",
             "Arn": "string",
             "LambdaExecutionRole": "string",

@@ -1,26 +1,26 @@
 {
   "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-thecproject-staging-165804-authRole",
-      "UnauthRoleArn": "arn:aws:iam::315119749632:role/amplify-thecproject-staging-165804-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::315119749632:role/amplify-thecproject-staging-165804-authRole",
+      "AuthRoleName": "amplify-theprojectc-staging-140842-authRole",
+      "UnauthRoleArn": "arn:aws:iam::315119749632:role/amplify-theprojectc-staging-140842-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::315119749632:role/amplify-theprojectc-staging-140842-authRole",
       "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-thecproject-staging-165804-deployment",
-      "UnauthRoleName": "amplify-thecproject-staging-165804-unauthRole",
-      "StackName": "amplify-thecproject-staging-165804",
-      "StackId": "arn:aws:cloudformation:us-east-2:315119749632:stack/amplify-thecproject-staging-165804/487e8820-8900-11ec-ad67-0abb30643078",
-      "AmplifyAppId": "d1xk87fz70e7m1",
-      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-thecproject-staging-165804-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+      "DeploymentBucketName": "amplify-theprojectc-staging-140842-deployment",
+      "UnauthRoleName": "amplify-theprojectc-staging-140842-unauthRole",
+      "StackName": "amplify-theprojectc-staging-140842",
+      "StackId": "arn:aws:cloudformation:us-east-2:315119749632:stack/amplify-theprojectc-staging-140842/e877a010-b032-11ec-840d-0659157a84c6",
+      "AmplifyAppId": "d1g0pfar7gksp7",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-theprojectc-staging-140842-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
-      "function": {
-        "thecprojectPostConfirmation": {
-          "deploymentBucketName": "amplify-thecproject-staging-165804-deployment",
-          "s3Key": "amplify-builds/thecprojectPostConfirmation-346f6f5733455a6c6c67-build.zip"
-        }
-      },
       "auth": {
-        "thecproject": {}
+        "TheProjectC": {}
+      },
+      "function": {
+        "TheProjectCPreSignup": {
+          "deploymentBucketName": "amplify-theprojectc-staging-140842-deployment",
+          "s3Key": "amplify-builds/TheProjectCPreSignup-685077426b673834492b-build.zip"
+        }
       }
     }
   }

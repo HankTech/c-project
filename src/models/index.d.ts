@@ -33,7 +33,7 @@ export declare class Message {
 
 export declare class ChatRoom {
   readonly id: string;
-  readonly newMessage?: number | null;
+  readonly newMessages?: number | null;
   readonly LastMessage?: Message | null;
   readonly Messages?: (Message | null)[] | null;
   readonly ChatRoomUsers?: (UserChatRoom | null)[] | null;
@@ -47,7 +47,9 @@ export declare class ChatRoom {
 export declare class User {
   readonly id: string;
   readonly name?: string | null;
+  readonly imageUri?: string | null;
   readonly status?: string | null;
+  readonly Messages?: (Message | null)[] | null;
   readonly Chatrooms?: (UserChatRoom | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;

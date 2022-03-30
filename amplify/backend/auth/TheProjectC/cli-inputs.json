@@ -1,10 +1,8 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "testAuthIdentityPool",
-    "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "thecprcde365e8",
-    "userPoolName": "thecproject",
+    "resourceNameTruncated": "theprob4a67fe1",
+    "userPoolName": "TheProjectC",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -14,8 +12,8 @@
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
-    "emailVerificationSubject": "Forgot password code: {####}",
-    "emailVerificationMessage": "Forgot password code: {####}",
+    "emailVerificationSubject": "Verification code: {####}",
+    "emailVerificationMessage": "Verification code: {####}",
     "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
@@ -24,14 +22,14 @@
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
-    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientRefreshTokenValidity": "60",
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "thecprcde365e8_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "TheProb4a67fe1_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "cde365e8",
-    "resourceName": "thecproject",
-    "authSelections": "identityPoolAndUserPool",
+    "sharedId": "b4a67fe1",
+    "resourceName": "TheProjectC",
+    "authSelections": "userPoolOnly",
     "serviceName": "Cognito",
     "usernameAttributes": [
       "email"
@@ -40,8 +38,6 @@
     "userPoolGroups": false,
     "userPoolGroupList": [],
     "adminQueries": false,
-    "thirdPartyAuth": false,
-    "authProviders": [],
     "usernameCaseSensitive": false,
     "useEnabledMfas": true,
     "authRoleArn": {
@@ -60,7 +56,7 @@
     "dependsOn": [
       {
         "category": "function",
-        "resourceName": "thecprojectPostConfirmation",
+        "resourceName": "TheProjectCPreSignup",
         "triggerProvider": "Cognito",
         "attributes": [
           "Arn",
@@ -68,16 +64,17 @@
         ]
       }
     ],
-    "hostedUI": false,
     "triggers": {
-      "PostConfirmation": [
+      "PreSignup": [
         "custom"
       ]
     },
+    "hostedUI": false,
     "parentStack": {
       "Ref": "AWS::StackId"
     },
-    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PostConfirmation\",\n    \"lambdaFunctionName\": \"thecprojectPostConfirmation\"\n  }\n]",
-    "permissions": []
+    "permissions": [],
+    "authProviders": [],
+    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PreSignUp\",\n    \"lambdaFunctionName\": \"TheProjectCPreSignup\"\n  }\n]"
   }
 }
