@@ -19,7 +19,7 @@
       "function": {
         "TheProjectCPreSignup": {
           "deploymentBucketName": "amplify-theprojectc-staging-140842-deployment",
-          "s3Key": "amplify-builds/TheProjectCPreSignup-685077426b673834492b-build.zip"
+          "s3Key": "amplify-builds/TheProjectCPreSignup-50443337736a6d774464-build.zip"
         }
       }
     }
