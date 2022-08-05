@@ -17,7 +17,6 @@ module.exports = {
           '@i18n': './src/i18n',
           '@models': './src/models',
           '@navigation': './src/navigation',
-          '@layouts': './src/layouts',
           '@screens': './src/screens',
           '@store': './src/store',
           '@theme': './src/theme',
