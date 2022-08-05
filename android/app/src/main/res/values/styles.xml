@@ -8,9 +8,7 @@
   <style name="BootTheme" parent="Theme.SplashScreen">
     <item name="windowSplashScreenBackground">@color/bootsplash_background</item>
 
-    <item name="windowSplashScreenAnimatedIcon">@drawable/icon_transparent</item>
-
-    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <item name="windowSplashScreenAnimatedIcon">@mipmap/bootsplash_logo</item>
 
     <item name="android:windowFullscreen">true</item>
 
