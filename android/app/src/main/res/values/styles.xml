@@ -10,7 +10,11 @@
 
     <item name="windowSplashScreenAnimatedIcon">@mipmap/bootsplash_logo</item>
 
-    <item name="android:windowFullscreen">true</item>
+    <!-- <item name="android:windowFullscreen">true</item> -->
+
+   <!-- <item name="android:navigationBarColor">@color/black</item> --> <!-- navigation bar -->
+
+   <!--  <item name="android:windowLightStatusBar">true</item> statusBar -->
 
     <item name="postSplashScreenTheme">@style/AppTheme</item>
   </style>
