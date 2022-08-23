@@ -7,7 +7,8 @@ const Intro = () => {
   useEffect(() => {
     Animated.timing(translation, {
       toValue: 100,
-      duration: 1200,
+      duration: 1000,
+      delay: 1000,
       useNativeDriver: true
     }).start()
   }, [])
@@ -76,7 +77,8 @@ const Intro = () => {
           }
         ]}
       >
-        <Text style={{ color: '#000', fontSize: 40, marginTop: 35 }}>Hello There</Text>
+        <Text style={styles.title}>Hello there</Text>
+        <Text style={styles.subtitle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a nisi non mauris aliquet congue.</Text>
       </Animated.View>
     </View>
   )
@@ -112,7 +114,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     bottom: '-100%',
     height: '100%',
-    width: '100%'
+    width: '100%',
+    paddingHorizontal: 20
+  },
+
+  title: {
+    color: '#000',
+    fontSize: 40,
+    marginTop: 35,
+    fontFamily: 'SF-Pro-Display-Medium',
+    letterSpacing: 2.1
+  },
+
+  subtitle: {
+    color: 'gray',
+    fontSize: 16,
+    fontFamily: 'SF-Pro-Display-Medium'
   }
 })
 
